@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atom</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/82872eeccd.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+</head>
+
+<body>
+    <main>
+        <section id="atom-body">
+            <div id="orbit-wrapper">
+                <div class="orbits" data-orbit="1" style="--shell: 1"></div>
+                <div class="orbits" data-orbit="2" style="--shell: 2"></div>
+                <div class="orbits" data-orbit="3" style="--shell: 3"></div>
+                <div class="orbits" data-orbit="4" style="--shell: 4"></div>
+                <div class="orbits" data-orbit="5" style="--shell: 5"></div>
+                <div class="orbits" data-orbit="6" style="--shell: 6"></div>
+                <div class="orbits" data-orbit="7" style="--shell: 7"></div>
+            </div>
+            <div id="nucleus">
+                <span id="atomic-number"></span>
+                <span id="element-name"></span>
+                <span id="atomic-mass"></span>
+            </div>
+        </section>
+        <section id="atom-details">
+            <div id="atomic-number-range-control">
+                <button disabled id="decrease-atomic-number">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <label id="atomic-number-label" for="atomic-number-range">
+                    <span id="tooltip">1</span>
+                    <input type="range" name="Atomic Number" id="atomic-number-range" min="1" max="118" value="1"
+                        title="Drag to Change Element" />
+                </label>
+                <button id="increase-atomic-number">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div id="electronic-configuration"></div>
+        </section>
+    </main>
+    <div id="settings">
+        <label for="search" id="search">
+            <span>
+                <i class="fa-brands fa-wikipedia-w"></i>
+            </span>
+            <span>Wikipedia</span>
+        </label>
+        <label for="animate-atom">
+            <input type="checkbox" name="Atom Animation" id="animate-atom">
+            <span>Animation</span>
+        </label>
+    </div>
+    <button id="toggle-settings">
+        <i class="fa-solid fa-bars-staggered"></i>
+    </button>
+</body>
+<script src="script.js"></script>
+
+</html>

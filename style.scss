@@ -1,0 +1,304 @@
+:root {
+    --bgcolor: deepskyblue;
+    --linecolor: darkgrey;
+    --element-color: #52ee61;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    user-select: none;
+    font-family: 'Tomorrow', 'Outfit', sans-serif;
+}
+
+@mixin pos_abs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin displayFlex($direction, $justify, $align, $gap) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    width: fit-content;
+    @include pos_abs;
+    @include displayFlex(column, center, normal, 20px);
+
+    #atom-body {
+        width: 350px;
+        height: 350px;
+        position: relative;
+
+        #orbit-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            .orbits {
+                $size: calc(100px + 30px * var(--shell));
+                width: $size;
+                height: $size;
+                @include pos_abs;
+                transform: translate(-50%, -50%) rotateZ(-90deg);
+                background-color: transparent;
+                border-radius: 50%;
+                outline: solid 1.5px lightgray;
+                z-index: calc(10 - var(--shell));
+                @include displayFlex(row, center, center, 0);
+                animation: revolve linear infinite paused;
+                animation-duration: calc(5s * var(--shell));
+            }
+
+            .orbits:nth-child(n + 2) {
+                display: none;
+            }
+
+            .orbits>.electron {
+                $size: 6.5px;
+                width: $size;
+                height: $size;
+                margin-right: -1px;
+                position: absolute;
+                border-radius: 50%;
+                background-color: var(--element-color);
+                box-shadow: 0 0 0 2.5px #fff;
+                transition: transform 5s ease;
+                cursor: pointer;
+            }
+
+            .electron:hover .orbits {
+                background-color: red
+            }
+        }
+
+        #nucleus {
+            @include pos_abs;
+            $nucleusSize: 80px;
+            width: $nucleusSize;
+            height: $nucleusSize;
+            border-radius: 50%;
+            background-color: var(--element-color);
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 0 40px -.5px var(--element-color),
+                0 2px 20px -1px rgba(0, 0, 0, 0.25),
+                inset 0 -5px 10px 0.5px rgba(0, 0, 0, 0.05),
+                inset 0 -10px 15px 0.5px rgba(0, 0, 0, 0.05);
+            @include displayFlex(row, center, center, 0);
+
+            #element-name {
+                font-size: 20px;
+                font-weight: 500;
+                color: white;
+            }
+
+            #atomic-number, #atomic-mass {
+                font-size: 8px;
+                font-weight: 500;
+                color: white;
+                transform: translate(2px, -5px);
+            }
+            #atomic-number {
+                transform: translate(-2px, 8px);
+            }
+        }
+    }
+
+    #atom-details {
+        width: 250px;
+        @include displayFlex(column, space-evenly, stretch, 20px);
+        margin: auto;
+
+        #atomic-number-range-control {
+            @include displayFlex(row, space-evenly, center, 10px);
+
+            #atomic-number-label {
+                width: 100%;
+                @include displayFlex(row, center, center, 0);
+                position: relative;
+
+                #atomic-number-range {
+                    width: 100%;
+                    cursor: pointer;
+                    appearance: none;
+                    width: 100%;
+                    height: 3px;
+                    background: linear-gradient(to right, var(--bgcolor) 0, var(--linecolor) 0);
+                    border-radius: 50px;
+
+                    $thumbSize: 18px;
+
+                    @mixin thumbStyle {
+                        width: $thumbSize;
+                        height: $thumbSize;
+                        border-radius: 50%;
+                        transform: translateY(-45%);
+                        background-color: #fff;
+                        border: solid 2.5px var(--linecolor);
+                    }
+
+                    &::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        @include thumbStyle;
+                    }
+
+                    &::-moz-range-thumb {
+                        appearance: none;
+                        @include thumbStyle;
+                    }
+
+                    &::-webkit-slider-runnable-track {
+                        width: 100%;
+                        height: 3px;
+                    }
+
+                    &::-moz-range-track {
+                        width: 100%;
+                        height: 3px;
+                    }
+                }
+
+                #atomic-number-range:active {
+                    cursor: grabbing;
+                }
+
+
+                #tooltip {
+                    position: absolute;
+                    top: -42px;
+                    left: 50%;
+                    transform: translateX(calc(-50% + 4px));
+                    width: 25px;
+                    height: 25px;
+                    background-color: var(--bgcolor);
+                    border-radius: 50%;
+                    color: #fff;
+                    font-size: 10px;
+                    text-align: center;
+                    line-height: 25px;
+                    display: none;
+                    pointer-events: none;
+                }
+
+                #tooltip::after {
+                    content: "";
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translate(-50%, -7.9px);
+                    width: 0;
+                    height: 0;
+                    border: solid 13px transparent;
+                    border-top-color: var(--bgcolor);
+                    border-radius: 10px;
+                    z-index: -999;
+                }
+            }
+
+            >button {
+                width: 20px;
+                height: 25px;
+                background: transparent;
+                font-size: 18px;
+                color: var(--linecolor);
+                cursor: pointer;
+            }
+
+            >button:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+
+        #electronic-configuration {
+            height: 80px;
+            @include displayFlex(row, center, flex-start, 10px);
+            flex-wrap: wrap;
+
+            .configuration {
+                font-size: 16px;
+                font-weight: 500;
+                color: grey;
+
+                sup {
+                    font-size: 12px;
+                    margin-left: -2px;
+                }
+            }
+
+            .highlight {
+                color: var(--element-color);
+                text-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.15);
+            }
+        }
+    }
+}
+
+#settings {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 30px 60px 30px 30px;
+    background-color: #f3f3f3;
+    border-radius: 10px 0 10px 10px;
+    padding: 7px;
+    display: none;
+    flex-direction: column;
+
+    label {
+        display: block;
+        border-radius: 10px;
+        padding: 7px 10px;
+        cursor: pointer;
+        @include displayFlex(row, space-evenly, stretch, 5px);
+
+        span:last-child {
+            display: inline-block;
+            width: 80px;
+            margin-left: 7px;
+        }
+    }
+    label:hover {
+        background: rgba($color: #000000, $alpha: 0.07);
+    }
+}
+#toggle-settings {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(-6px);
+    background-color: #f3f3f3;
+    margin: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 7px;
+    z-index: 99999;
+}
+
+@keyframes revolve {
+    100% {
+        transform: translate(-50%, -50%) rotate(270deg);
+    }
+}

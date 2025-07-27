@@ -215,7 +215,7 @@ function searchElement() {
 
 
 $(document).ready(() => {
-    fetch('elements.json')
+    fetch('data/elements.json')
         .then(response => response.json())
         .then(data => {
             elements = data;

@@ -15,7 +15,7 @@ Access the application at: [https://rupansamanta.github.io/atomsphere](https://r
 * **Atomic Model Rendering**: Dynamically displays electron orbitals and shell structures for each element.
 * **Electron Configuration Generator**: Automatically computes and presents electron configurations.
 * **Interactive Periodic Table**: Explore element properties via hover and click interactions.
-  
+
 ---
 
 ## Technology Stack
@@ -43,6 +43,14 @@ Contributions are welcome. To propose changes or improvements:
 3. Commit your changes: `git commit -m "Add your message"`.
 4. Push to the branch: `git push origin feature/YourFeature`.
 5. Open a pull request and describe your modifications.
+
+---
+
+## Preview
+
+<p align="center">
+  <img src="https://rupansamanta.github.io/atomsphere/assets/images/preview_103606.png" alt="Atomsphere Screenshot" width="600">
+</p>
 
 ---
 

@@ -1,6 +1,51 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tomorrow:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<h1 style="font-family: 'Tomorrow', sans-serif;">Atomsphere</h1>
+# <img src="https://rupansamanta.github.io/atomsphere/assets/icons/logo.png" alt="Atomsphere Logo" width="35"> Atomsphere
 
-### <p style="font-family: 'Tomorrow', sans-serif; font-weight: 400">An interactive atomic model visualizer that dynamically displays electron configurations, orbitals, and periodic element properties with a sleek, user-friendly interface. Perfect for learning and exploring the periodic table!</p>
+An interactive atomic model visualizer for exploring atomic structures, electron configurations, and periodic trends through a responsive and intuitive interface.
+
+---
+
+## Live Demo
+
+Access the application at: [https://rupansamanta.github.io/atomsphere](https://rupansamanta.github.io/atomsphere)
+
+---
+
+## Features
+
+* **Atomic Model Rendering**: Dynamically displays electron orbitals and shell structures for each element.
+* **Electron Configuration Generator**: Automatically computes and presents electron configurations.
+* **Interactive Periodic Table**: Explore element properties via hover and click interactions.
+  
+---
+
+## Technology Stack
+
+* **HTML5**
+* **SCSS**
+* **JavaScript (ES6)**
+* **jQuery**
+* **Hosted on GitHub Pages**
+
+---
+
+## Motivation
+
+Atomsphere was developed to provide a visual, hands-on learning experience for students and enthusiasts of chemistry and physics. By combining educational content with interactive web technologies, this project aims to make the fundamentals of atomic structure both accessible and engaging.
+
+---
+
+## Contribution Guidelines
+
+Contributions are welcome. To propose changes or improvements:
+
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m "Add your message"`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request and describe your modifications.
+
+---
+
+## Acknowledgments
+
+This project was inspired by educational needs in the fields of chemistry and computational science. Special thanks to all contributors and the open-source community for their support.
